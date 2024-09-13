@@ -153,10 +153,17 @@ footer {
   margin-top: 20px;
 }
 
-/* Blurred overlay */
+/* Blurred overlay - apply to everything except the header */
 .blurred {
   filter: blur(8px);
   pointer-events: none;
+}
+
+/* Specifically exclude the header from being blurred */
+header {
+  filter: none; /* Ensure header isn't blurred */
+  pointer-events: auto; /* Allow interaction with the header */
+  z-index: 1000; /* Ensure header stays above the blurred content */
 }
 
 /* Fullscreen overlay for login/signup prompt */
@@ -170,14 +177,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 999; /* Ensure overlay is above blurred content but below header */
   color: white;
   font-size: 1.5rem;
   text-align: center;
-}
-
-.overlay a {
-  color: #fff;
-  text-decoration: underline;
-  margin-top: 20px;
 }

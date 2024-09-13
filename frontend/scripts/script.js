@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if user is logged in
     const isAuthenticated = checkAuthStatus();
 
-    if (!isAuthenticated) {
-        // Apply blur to game content
-        document.querySelector('.game-container').classList.add('blurred');
+    // Check if the game-container element exists
+    const gameContainer = document.querySelector('.game-container');
+    
+    if (!isAuthenticated && gameContainer) {
+        // Apply blur to game content if it exists
+        gameContainer.classList.add('blurred');
 
         // Create overlay
         const overlay = document.createElement('div');
@@ -26,13 +29,17 @@ function checkAuthStatus() {
 document.addEventListener('DOMContentLoaded', function() {
     const accountLink = document.querySelector('nav .main-nav li a[href="./regOrLog.html"]');
 
-    if (localStorage.getItem('isAuthenticated') === 'true') {
-        // Change the link to account.html if the user is logged in
-        accountLink.setAttribute('href', './account.html');
-        accountLink.textContent = 'Account';
+    if (accountLink) {
+        if (localStorage.getItem('isAuthenticated') === 'true') {
+            // Change the link to account.html if the user is logged in
+            accountLink.setAttribute('href', './account.html');
+            accountLink.textContent = 'Account';
+        } else {
+            // Set it back to regOrLog.html if not logged in
+            accountLink.setAttribute('href', './regOrLog.html');
+            accountLink.textContent = 'Log In / Sign Up';
+        }
     } else {
-        // Set it back to regOrLog.html if not logged in
-        accountLink.setAttribute('href', './regOrLog.html');
-        accountLink.textContent = 'Log In / Sign Up';
+        console.error('Account link not found in the navigation.');
     }
 });
