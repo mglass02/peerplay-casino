@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Game</title>
+    <link rel="stylesheet" href="../styles/styles.css"> <!-- Global styles -->
+    <link rel="stylesheet" href="../styles/blackjack.css"> <!-- Roulette-specific styles -->
+</head>
+<body>
+
+    <header>
+        <img src="../images/bw-logo.jpg" alt="PeerPlay Logo" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <ul class="dropdown-content">
+                        <li><a href="./slot.html">Slot Machine</a></li>
+                        <li><a href="./dice.html">Dice</a></li>
+                        <li><a href="./blackjack.html">Blackjack</a></li>
+                    </ul>
+                </li>
+                <li><a href="./regOrLog.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="game-container">
+        <h1 class="game-title">Blackjack</h1>
+    
+        <div class="blackjack-table">
+            <div class="dealer">
+                <h2>Dealer's Hand</h2>
+                <div id="dealer-cards" class="card-container"></div>
+                <p id="dealer-total" class="status-display">Total: 0</p>
+            </div>
+    
+            <div class="player">
+                <h2>Your Hand</h2>
+                <div id="player-cards" class="card-container"></div>
+                <p id="player-total" class="status-display">Total: 0</p>
+            </div>
+        </div>
+    
+        <div class="controls">
+            <button id="hit-button" class="btn-primary">Hit</button>
+            <button id="stand-button" class="btn-primary">Stand</button>
+            <button id="new-game-button" class="btn-primary" style="display:none;">New Game</button>
+        </div>
+    
+        <p id="game-status" class="status-display">Press "Hit" to start the game!</p>
+    </div>
+    
+    
+    <footer>
+        <p>&copy; 2024 PeerPlay Casino. All rights reserved.</p>
+    </footer>
+    
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/blackjack.js"></script>
+</body>
+</html>

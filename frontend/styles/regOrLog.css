@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between header, content, and footer */
+    min-height: 100vh;
+    padding: 0 20px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: #e0e0e0;
+  }
+  
+  header nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  header nav ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  header nav ul li a:hover {
+    color: #ffcc00;
+  }
+  
+/* Container styling for the forms */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1f2833; /* Dark background to match theme */
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    text-align: center;
+    width: 50%;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+/* Input field styling */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ffcc00; /* Subtle green border */
+    background-color: #0b0c10; /* Dark input background */
+    color: #fff; /* White text */
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Hover effect for input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #ffcc00; /* Yellow border on focus */
+}
+
+/* Button styling */
+button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    color: #0b0c10;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #ffc700;
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* Style for error or status messages (if needed) */
+.status-display {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ffcc00; /* Consistent yellow for messaging */
+}
+

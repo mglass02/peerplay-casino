@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game</title>
+    <link rel="stylesheet" href="../styles/styles.css"> <!-- Global styles -->
+    <link rel="stylesheet" href="../styles/regOrLog.css"> <!-- Slot-specific styles -->
+</head>
+<body>
+
+    <header>
+        <img src="../images/bw-logo.jpg" alt="PeerPlay Logo" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <ul class="dropdown-content">
+                        <li><a href="./slot.html">Slot Machine</a></li>
+                        <li><a href="./dice.html">Dice</a></li>
+                        <li><a href="./blackjack.html">Blackjack</a></li>
+                    </ul>
+                </li>
+                <li><a href="./regOrLog.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main class="form-container">
+        
+        <form id="signup-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+          </form>
+          
+          <form id="login-form">
+            <input type="email" id="email-login" placeholder="Email" required>
+            <input type="password" id="password-login" placeholder="Password" required>
+            <button type="submit">Log In</button>
+          </form>
+                    
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 PeerPlay Casino. All rights reserved.</p>
+    </footer>
+    
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/regOrLog.js"></script>
+</body>
+</html>
+
+

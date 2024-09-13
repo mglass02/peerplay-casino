@@ -1,0 +1,143 @@
+/* General Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between header, content, and footer */
+    min-height: 100vh;
+    padding: 0 20px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: #e0e0e0;
+    text-align: center;
+  }
+  
+  header nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  header nav ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  header nav ul li a:hover {
+    color: #ffcc00;
+  }
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Darker shadow for depth */
+    /* max-width: 600px; */
+    width: 50%;
+    height: 70%;
+    color: #e0e0e0; /* Match the body text color */
+    margin: 0 auto; /* Center horizontally in case of any browser quirks */
+    margin-top: 20px;
+}
+
+.game-info h2 {
+    font-weight: 600;
+    color: #ffcc00; /* Use the main theme's yellow */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.game-info p {
+    color: #c0c0c0; /* Subtle, softer text color */
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.scores {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    background-color: #282828; /* Dark background for scores */
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#player-pot, #win-status {
+    color: #ffcc00; /* Highlight important information in yellow */
+    font-weight: 500;
+}
+
+.slots {
+    width: calc(3.5 * 79px);
+    height: calc(3 * 79px);
+    border: 1px solid #444; /* Darker border to match theme */
+    padding: calc(0.3 * 79px);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #2a2a2a; /* Darker background for slots */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    border-radius: 10px;
+}
+
+.reels {
+    border: 1px solid #444;
+    width: 79px;
+    height: calc(3 * 79px);
+    background-image: url(https://assets.codepen.io/439000/slotreel.webp);
+    background-repeat: repeat-y;
+    background-position: 0 0;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4); /* Darker inner shadow */
+}
+
+#roll-button {
+    background-color: #ffcc00; /* Consistent button color */
+    color: #141414;
+    padding: 12px 24px; /* Larger button for better interaction */
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#roll-button:hover {
+    background-color: #ffc700;
+    transform: translateY(-2px);
+}
+
+#deposit-options {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.deposit-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Consistent shadow */
+}
+
+.deposit-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,104 @@
+/* General Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between header, content, and footer */
+  min-height: 100vh;
+  padding: 0 20px;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: #e0e0e0;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  color: #ffcc00;
+}
+
+.game-container {
+  text-align: center;
+  height: 70%;
+  width: 50%;
+  border: 3px solid #ffcc00;
+  margin: 30px auto;
+  background-color: #1f2833; /* Add background to make shadow stand out */
+  box-shadow: 0px 10px 30px rgba(255, 204, 0, 0.8), 0px 0px 20px rgba(255, 204, 0, 0.6); /* Outer and inner glow */
+  border-radius: 10px; /* Smooth corners */
+  padding: 20px;
+}
+
+/* Blackjack Game Specific Styles */
+.game-title {
+  font-size: 2.5em;
+  color: #ffcc00;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blackjack-table {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 60px;
+  height: 90px;
+  margin: 0 10px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  font-size: 1.5em;
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+  text-align: center;
+}
+
+.btn-primary {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #45a29e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #66fcf1;
+}
+
+.status-display {
+  font-size: 1.2em;
+  color: #ffcc00;
+  margin-top: 10px;
+}

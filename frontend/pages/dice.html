@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Game</title>
+    <link rel="stylesheet" href="../styles/styles.css"> <!-- Global styles -->
+    <link rel="stylesheet" href="../styles/dice.css"> <!-- Roulette-specific styles -->
+</head>
+<body>
+
+    <header>
+        <img src="../images/bw-logo.jpg" alt="PeerPlay Logo" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <ul class="dropdown-content">
+                        <li><a href="./slot.html">Slot Machine</a></li>
+                        <li><a href="./dice.html">Dice</a></li>
+                        <li><a href="./blackjack.html">Blackjack</a></li>
+                    </ul>
+                </li>
+                <li><a href="./regOrLog.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="game-container">
+        <h1 class="game-title">Roll the Dice!</h1>
+        
+        <div class="dice-container">
+            <div class="dice" id="dice1">⚀</div>
+            <div class="dice" id="dice2">⚀</div>
+        </div>
+    
+        <button id="rollDice" class="btn-primary">Roll Dice</button>
+    
+        <p class="status-display" id="diceResult">Roll the dice to get a result!</p>
+    </div>
+    
+    
+    <footer>
+        <p>&copy; 2024 PeerPlay Casino. All rights reserved.</p>
+    </footer>
+    
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/dice.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game</title>
+    <link rel="stylesheet" href="../styles/styles.css"> <!-- Global styles -->
+    <link rel="stylesheet" href="../styles/slot.css"> <!-- Slot-specific styles -->
+</head>
+<body>
+
+    <header>
+        <img src="../images/bw-logo.jpg" alt="PeerPlay Logo" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Games</a>
+                    <ul class="dropdown-content">
+                        <li><a href="./slot.html">Slot Machine</a></li>
+                        <li><a href="./dice.html">Dice</a></li>
+                        <li><a href="./blackjack.html">Blackjack</a></li>
+                    </ul>
+                </li>
+                <li><a href="./regOrLog.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="game-container">
+        <div class="game-info">
+            <h2>How It Works</h2>
+            <p>Players start with £5</p>
+            <p>Every roll costs £1</p>
+            <p>Small win (2 fruit) = +£2</p>
+            <p>Big win (3 fruit) = +£5</p>
+        </div>
+
+        <div class="scores">
+            <div id="player-pot">Player Pot: £5</div>
+            <div id="win-status">Waiting for result...</div>
+        </div>
+
+        <div class="slots">
+            <div class="reels"></div>
+            <div class="reels"></div>
+            <div class="reels"></div>
+        </div>
+
+        <button id="roll-button">Roll</button>
+
+        <div id="deposit-options" style="display: none;">
+            <p>Deposit Funds:</p>
+            <button class="deposit-btn" data-value="2">£2</button>
+            <button class="deposit-btn" data-value="5">£5</button>
+            <button class="deposit-btn" data-value="10">£10</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 PeerPlay Casino. All rights reserved.</p>
+    </footer>
+    
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/slots.js"></script>
+</body>
+</html>
+
