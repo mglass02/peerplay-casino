@@ -16,5 +16,65 @@
     padding: 10px 20px;        
     font-size: 1rem;           
     cursor: pointer;
-    font-weight: bolder;           
+    font-weight: bolder;   
+    margin-top: 10px;  
+    margin-bottom: 10px;      
 }
+
+.deposit{
+    background-color: #ffcc00;
+    margin-bottom: none;
+}
+
+/* Dropdown Menu Styling */
+/* Dropdown Menu Styling */
+.dropdown-deposit {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content-deposit {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position the dropdown directly below the button */
+    left: 0;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0; /* Remove margin to avoid gaps */
+    border-radius: 5px;
+  }
+  
+  /* Style for the dropdown button */
+  .dropdown-content-deposit li {
+    width: 100%;
+    text-align: left;
+    list-style-type: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style for the dropdown buttons */
+  .dropdown-content-deposit button {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .dropdown-content-deposit button:hover {
+    background-color: #555;
+  }
+  
+  /* Show dropdown on hover for both button and content */
+  .dropdown-deposit:hover .dropdown-content-deposit,
+  .dropdown-content-deposit:hover {
+    display: block;
+  }
+  

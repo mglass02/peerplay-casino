@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if user is logged in
+    // Check if user is logged in by verifying the token
     const isAuthenticated = checkAuthStatus();
 
     // Check if the game-container element exists
@@ -18,12 +18,40 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>`;
         
         document.body.appendChild(overlay);
+    } else if (isAuthenticated && gameContainer) {
+        // If authenticated, remove blur (if it exists) and enable access to games
+        gameContainer.classList.remove('blurred');
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+            overlay.remove();
+        }
     }
 });
 
+// Function to check if the user is authenticated
 function checkAuthStatus() {
-    // Check localStorage for login status
-    return localStorage.getItem('isAuthenticated') === 'true';  // Use 'true' as the login flag
+    const token = localStorage.getItem('token');  // Retrieve the JWT token from localStorage
+
+    if (!token) {
+        return false;  // No token found, user is not authenticated
+    }
+
+    try {
+        // Decode the JWT token (base64 payload)
+        const payload = JSON.parse(atob(token.split('.')[1]));
+
+        // Check if the token has expired (using 'exp' field in JWT)
+        if (payload.exp && Date.now() >= payload.exp * 1000) {
+            console.log("Token has expired");
+            localStorage.removeItem('token');  // Remove the expired token
+            return false;
+        }
+
+        return true;  // Token is valid and not expired
+    } catch (error) {
+        console.error('Invalid token format:', error);
+        return false;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -31,15 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (accountLink) {
         if (localStorage.getItem('isAuthenticated') === 'true') {
-            // Change the link to account.html if the user is logged in
             accountLink.setAttribute('href', './account.html');
             accountLink.textContent = 'Account';
         } else {
-            // Set it back to regOrLog.html if not logged in
             accountLink.setAttribute('href', './regOrLog.html');
-            accountLink.textContent = 'Log In / Sign Up';
+            accountLink.textContent = 'Log In';
         }
     } else {
-        console.error('Account link not found in the navigation.');
+        console.warn('Account link not found in the navigation.');  // Use 'warn' instead of 'error' for non-critical issues
     }
 });
+

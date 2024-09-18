@@ -33,33 +33,30 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // Fetch the login form values
   const email = document.getElementById('email-login').value;
   const password = document.getElementById('password-login').value;
 
   try {
-    // Make POST request to backend login route
-    const response = await fetch('http://localhost:5000/auth/login', {  
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
+      const response = await fetch('http://localhost:5000/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    // Handle the response from the server
-    if (response.ok) {
-      // Store a token or login flag in localStorage or sessionStorage
-      localStorage.setItem('isAuthenticated', 'true');  // Set this to 'true' or use a token
-      alert('Login successful!');
-      // Optionally redirect to the page the user was trying to access
-      window.location.href = data.redirect || './home.html';  // Redirect to the home or any other page
-    } else {
-      alert('Login failed: ' + data.message);
-    }
+      if (response.ok) {
+          // Store the JWT token in localStorage
+          localStorage.setItem('token', data.token); // Store the token
+          alert('Login successful!');
+          window.location.href = './home.html'; // Redirect to home or any page after login
+      } else {
+          alert('Login failed: ' + data.message);
+      }
   } catch (err) {
-    console.error('Error:', err);
-    alert('An error occurred. Please try again later.');
+      console.error('Error:', err);
+      alert('An error occurred. Please try again later.');
   }
 });
+
 

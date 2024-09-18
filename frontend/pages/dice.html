@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roulette Game</title>
+    <title>Dice Game</title>
     <link rel="stylesheet" href="../styles/styles.css"> <!-- Global styles -->
-    <link rel="stylesheet" href="../styles/dice.css"> <!-- Roulette-specific styles -->
+    <link rel="stylesheet" href="../styles/dice.css"> <!-- Dice-specific styles -->
 </head>
 <body>
 
@@ -27,27 +27,28 @@
             </ul>
         </nav>
     </header>
-    
 
     <div class="game-container">
         <h1 class="game-title">Roll the Dice!</h1>
-        
+
         <div class="dice-container">
             <div class="dice" id="dice1">⚀</div>
             <div class="dice" id="dice2">⚀</div>
         </div>
-    
+
+        <label for="guess">Guess the sum (2 to 12):</label>
+        <input type="number" id="guess" min="2" max="12">
+
         <button id="rollDice" class="btn-primary">Roll Dice</button>
-    
-        <p class="status-display" id="diceResult">Roll the dice to get a result!</p>
+
+        <p class="status-display" id="diceResult">Roll the dice and make your guess!</p>
     </div>
-    
-    
+
     <footer>
         <p>&copy; 2024 PeerPlay Casino. All rights reserved.</p>
     </footer>
-    
-    <script src="../scripts/script.js"></script>
+
     <script src="../scripts/dice.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
