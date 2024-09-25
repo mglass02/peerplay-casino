@@ -9,7 +9,7 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
 
   try {
     // Make POST request to backend signup route
-    const response = await fetch('https://sprightly-dolphin-5975b2/auth/signup', {  // Assuming backend is running on sprightly-dolphin-5975b2
+    const response = await fetch('https://sprightly-dolphin-5975b2.netlify.app/auth/signup', {  // Assuming backend is running on sprightly-dolphin-5975b2
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password })
@@ -37,7 +37,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   const password = document.getElementById('password-login').value;
 
   try {
-      const response = await fetch('https://sprightly-dolphin-5975b2/auth/login', {
+      const response = await fetch('https://sprightly-dolphin-5975b2.netlify.app/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
