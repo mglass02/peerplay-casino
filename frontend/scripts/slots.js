@@ -19,7 +19,7 @@ async function fetchUserPot() {
     }
 
     try {
-        const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/user/funds', {
+        const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/auth/user/funds', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -66,7 +66,7 @@ async function handlePayment(amount) {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/user/play-game', {
+        const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/auth/user/play-game', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -94,7 +94,7 @@ async function transferWinnings(amount) {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/user/win', {
+        const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/auth/user/win', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

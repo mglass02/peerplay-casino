@@ -9,7 +9,7 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
 
   try {
     // Make POST request to backend signup route
-    const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/signup', {  // Assuming backend is running on 3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app
+    const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/auth/signup', {  // Assuming backend is running on https://sprightly-dolphin-5975b2.netlify.app
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password })
@@ -37,7 +37,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   const password = document.getElementById('password-login').value;
 
   try {
-      const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/login', {
+      const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
