@@ -42,8 +42,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Darker shadow for depth */
     /* max-width: 600px; */
-    width: 50%;
-    height: 70%;
+    width: 70%;
+    height: 100%;
     color: #e0e0e0; /* Match the body text color */
     margin: 0 auto; /* Center horizontally in case of any browser quirks */
     margin-top: 20px;
@@ -79,8 +79,8 @@ body {
 }
 
 .slots {
-    width: calc(3.5 * 79px);
-    height: calc(3 * 79px);
+    width: calc(4 * 79px);
+    height: calc(3.75 * 79px);
     border: 1px solid #444; /* Darker border to match theme */
     padding: calc(0.3 * 79px);
     display: flex;

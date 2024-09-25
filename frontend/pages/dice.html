@@ -31,17 +31,25 @@
     <div class="game-container">
         <h1 class="game-title">Roll the Dice!</h1>
 
+        <div class="game-cost-container">
+            <h3>Choose your game cost:</h3>
+            <button class="game-cost" data-amount="1">£1</button>
+            <button class="game-cost" data-amount="3">£3</button>
+            <button class="game-cost" data-amount="5">£5</button>
+            <button class="game-cost" data-amount="10">£10</button>
+        </div>
+        
         <div class="dice-container">
             <div class="dice" id="dice1">⚀</div>
             <div class="dice" id="dice2">⚀</div>
         </div>
 
         <label for="guess">Guess the sum (2 to 12):</label>
-        <input type="number" id="guess" min="2" max="12">
+        <input type="number" id="guess" min="2" max="12" disabled>
 
-        <button id="rollDice" class="btn-primary">Roll Dice</button>
+        <button id="rollDice" class="btn-primary" disabled>Roll Dice</button>
 
-        <p class="status-display" id="diceResult">Roll the dice and make your guess!</p>
+        <p class="status-display" id="diceResult">Select an amount to play and guess the result!</p>
     </div>
 
     <footer>

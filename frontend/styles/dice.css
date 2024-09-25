@@ -34,8 +34,8 @@ header nav ul li a:hover {
 
 .game-container {
   text-align: center;
-  height: 70%;
-  width: 50%;
+  width: 90%; /* Make it more fluid for small screens */
+  max-width: 600px; /* Limit max width for larger screens */
   border: 3px solid #ffcc00;
   margin: 30px auto;
   background-color: #1f2833; /* Add background to make shadow stand out */
@@ -44,59 +44,103 @@ header nav ul li a:hover {
   padding: 20px;
 }
 
+.game-title {
+  font-size: 2.5em;
+  color: #ffcc00;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dice {
+  font-size: 5em;
+  margin: 0 10px; /* Reduce margin for smaller devices */
+  background-color: #1f2833;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px; /* Adjust size for small screens */
+  text-align: center;
+}
+
+#dice1, #dice2 {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ffcc00;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ffcc00;
+}
+
+.status-display {
+  font-size: 1.5em;
+  color: #ffcc00;
+  margin-top: 20px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2em; /* Smaller font size for phones */
+  }
+
+  .dice {
+    font-size: 3.5em; /* Adjust dice size */
+    width: 60px;
+    height: 60px; /* Smaller dice for mobile */
+  }
+
+  .btn-primary {
+    padding: 8px 16px;
+    font-size: 16px; /* Adjust button size for small screens */
+  }
+
+  .status-display {
+    font-size: 1.2em; /* Smaller status text */
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    width: 100%; /* Full width for very small devices */
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .dice-container {
+    flex-direction: column; /* Stack dice vertically on small screens */
+  }
+
+  .dice {
+    margin: 10px 0; /* Space between vertically stacked dice */
+  }
 
   .game-title {
-    font-size: 2.5em;
-    color: #ffcc00;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 1.8em; /* Even smaller font for extra-small devices */
   }
-  
-  .dice-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .dice {
-    font-size: 5em;
-    margin: 0 20px;
-    background-color: #1f2833;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-  }
-  
-  #dice1, #dice2 {
-    transition: transform 0.3s ease;
-  }
-  
-  .btn-primary {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #ffcc00;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-primary:hover {
-    background-color: #ffcc00;
-  }
-  
+
   .status-display {
-    font-size: 1.5em;
-    color: #ffcc00;
-    margin-top: 20px;
+    font-size: 1em; /* Adjust status text for better readability */
   }
+}

@@ -70,3 +70,63 @@ exports.getUserFunds = async (req, res) => {
     res.status(500).json({ message: 'Server error', error });
   }
 };
+
+// deposit funds 
+// Controller function to handle deposits
+exports.depositMoney = async (req, res) => {
+  const { depositAmount } = req.body;
+
+  try {
+      // The user is already attached to req.user by the protect middleware
+      const user = req.user;
+
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Update the user's pot
+      user.pot += depositAmount;
+
+      // Save the updated user data
+      await user.save();
+
+      // Respond with success
+      return res.status(200).json({ message: 'Deposit successful', pot: user.pot });
+  } catch (error) {
+      // Handle any errors that occur
+      return res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+// Get user funds (protected route)
+exports.getUserXP = async (req, res) => {
+  try {
+    // Find the user by ID (we have the user's ID because of the JWT middleware)
+    const user = await User.findById(req.user.id).select('xp'); // Only select the 'pot' field
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Respond with the user's funds
+    res.status(200).json({ xp: user.xp });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+// Route to fetch the current pot
+exports.lottoFund = async (req, res) => {
+  try {
+      const companyUser = await User.findOne({ email: 'peerplaycasino@gmail.com' });
+
+      if (!companyUser) {
+          return res.status(404).json({ message: 'Company account not found.' });
+      }
+
+      res.json({ pot: companyUser.pot });
+  } catch (error) {
+      console.error('Error fetching company pot:', error);
+      res.status(500).json({ message: 'Server error' });
+  }
+};

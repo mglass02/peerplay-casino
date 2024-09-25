@@ -4,10 +4,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const dice2 = document.getElementById('dice2');
     const diceResult = document.getElementById('diceResult');
     const guessInput = document.getElementById('guess');
+    const gameCostButtons = document.querySelectorAll('.game-cost');
+    let selectedAmount = null; // To store the selected betting amount
+
+    // Function to handle the amount selection
+    gameCostButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            selectedAmount = parseInt(this.getAttribute('data-amount'));
+            diceResult.textContent = `You chose to play with £${selectedAmount}. Now, guess the dice sum!`;
+            guessInput.disabled = false; // Enable guess input after selecting amount
+            rollButton.disabled = false; // Enable the roll button after selecting amount
+        });
+    });
 
     // Function to roll the dice
     function rollDice() {
-        const rollingDuration = 1500; // Extend the rolling duration to 1.5 seconds
+        const rollingDuration = 1500; // Duration for dice rolling effect
         const dice1Value = Math.floor(Math.random() * 6) + 1;
         const dice2Value = Math.floor(Math.random() * 6) + 1;
         const total = dice1Value + dice2Value;
@@ -37,10 +49,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Check if the user's guess was correct
             if (userGuess === total) {
-                diceResult.textContent += ' Winner!!';
+                const winnings = selectedAmount * 3;
+                diceResult.textContent += ` Winner! You win £${winnings}!`;
             } else {
-                diceResult.textContent += ' You Lose!';
+                diceResult.textContent += ' You lose!';
             }
+
+            // Reset guess input and disable rolling until a new amount is chosen
+            guessInput.disabled = true;
+            rollButton.disabled = true;
+            guessInput.value = ''; // Clear the guess input field
         }, rollingDuration);
     }
 

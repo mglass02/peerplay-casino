@@ -27,15 +27,13 @@
             </ul>
         </nav>
     </header>
-    
 
     <div class="game-container">
         <div class="game-info">
             <h2>How It Works</h2>
-            <p>Players start with £5</p>
-            <p>Every roll costs £1</p>
-            <p>Small win (2 fruit) = +£2</p>
-            <p>Big win (3 fruit) = +£5</p>
+            <p>Choose how much to play with</p>
+            <p>Small win (2 fruit) = 1.5x winnings</p>
+            <p>Big win (3 fruit) = 5x winnings</p>
         </div>
 
         <div class="scores">
@@ -50,6 +48,15 @@
         </div>
 
         <button id="roll-button">Roll</button>
+
+        <!-- Bet Amount Buttons -->
+        <div id="bet-amounts" style="display: none;">
+            <p>Select your bet amount:</p>
+            <button class="bet-amount" data-amount="1">£1</button>
+            <button class="bet-amount" data-amount="3">£3</button>
+            <button class="bet-amount" data-amount="5">£5</button>
+            <button class="bet-amount" data-amount="10">£10</button>
+        </div>
 
         <div id="deposit-options" style="display: none;">
             <p>Deposit Funds:</p>
@@ -67,4 +74,3 @@
     <script src="../scripts/slots.js"></script>
 </body>
 </html>
-

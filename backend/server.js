@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const runLottery = require('./jobs/lotteryJob');
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
@@ -10,11 +11,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // This allows all origins, you can restrict this if needed
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
-// Serve static frontend files from 'frontend' directory
+// Serve static files from the 'frontend' directory
 app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Serve files from the /pages/ directory as root
+app.use('/', express.static(path.join(__dirname, '../frontend/pages')));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -24,11 +32,13 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 // Routes
 app.use('/auth', authRoutes);
 
-// Serve home.html for any other route (fallback route)
+// Fallback route (optional)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/pages/home.html'));
 });
 
-app.listen(PORT, () => {
+runLottery();
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });

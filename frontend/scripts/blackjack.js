@@ -7,11 +7,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const hitButton = document.getElementById('hit-button');
     const standButton = document.getElementById('stand-button');
     const newGameButton = document.getElementById('new-game-button');
+    const gameCostButtons = document.querySelectorAll('.game-cost');
 
     let playerHand = [];
     let dealerHand = [];
     let deck = [];
     let gameOver = false;
+    let selectedAmount = null; // To store the selected betting amount
+
+    // Disable hit and stand buttons initially
+    hitButton.disabled = true;
+    standButton.disabled = true;
+
+    // Function to handle the amount selection
+    gameCostButtons.forEach(button => {
+        button.addEventListener('click', async function () {
+            selectedAmount = parseInt(this.getAttribute('data-amount'));
+            gameStatusElement.textContent = `You chose to play with £${selectedAmount}. Placing bet...`;
+            const paymentSuccess = await handlePayment(selectedAmount);
+            if (!paymentSuccess) {
+                gameStatusElement.textContent = "Payment failed. Insufficient funds. Please try again.";
+                selectedAmount = null; // Reset bet amount
+            } else {
+                gameStatusElement.textContent = `Bet placed with £${selectedAmount}. Ready to play!`;
+                hitButton.disabled = false;  // Enable the hit and stand buttons after bet is placed
+                standButton.disabled = false;
+                startNewGame();
+            }
+        });
+    });
 
     // Card deck
     function createDeck() {
@@ -68,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Start a new game
-    function newGame() {
+    function startNewGame() {
         deck = createDeck();
         shuffleDeck(deck);
         playerHand = [deck.pop(), deck.pop()];
@@ -80,10 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
         playerTotalElement.textContent = `Total: ${calculateHandTotal(playerHand)}`;
         dealerTotalElement.textContent = `Total: ?`;
 
-        gameStatusElement.textContent = "Hit or Stand?";
+        gameStatusElement.textContent = "Make your move! Hit or Stand?";
         newGameButton.style.display = "none";
-        hitButton.style.display = "inline-block";
-        standButton.style.display = "inline-block";
     }
 
     // Player hits (draws a card)
@@ -96,14 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (playerTotal > 21) {
                 gameOver = true;
-                gameStatusElement.textContent = "You busted! Dealer wins.";
-                endGame();
+                gameStatusElement.textContent = "You busted! Dealer wins. Better luck next time.";
+                endGame(false, 0);
             }
         }
     }
 
     // Player stands (dealer's turn)
-    function stand() {
+    async function stand() {
         if (!gameOver) {
             gameOver = true;
 
@@ -122,32 +144,89 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Determine winner
             const playerTotal = calculateHandTotal(playerHand);
-            if (dealerTotal > 21) {
-                gameStatusElement.textContent = "Dealer busted! You win!";
-            } else if (playerTotal > dealerTotal) {
-                gameStatusElement.textContent = "You win!";
+            if (dealerTotal > 21 || playerTotal > dealerTotal) {
+                const winnings = selectedAmount * 1.5;
+                gameStatusElement.textContent = `You win £${winnings.toFixed(2)}! Congratulations!`;
+                await handleWinnings(winnings);  // Winnings are 1.5x the amount
+                endGame(true, winnings);
             } else if (playerTotal < dealerTotal) {
-                gameStatusElement.textContent = "Dealer wins!";
+                gameStatusElement.textContent = `Dealer wins! You lost £${selectedAmount}.`;
+                endGame(false, 0);
             } else {
-                gameStatusElement.textContent = "It's a tie!";
+                gameStatusElement.textContent = `It's a tie! You get to keep your £${selectedAmount}.`;
+                endGame(false, selectedAmount);  // In case of a tie, no loss or win
             }
-
-            endGame();
         }
     }
 
     // End game
-    function endGame() {
-        hitButton.style.display = "none";
-        standButton.style.display = "none";
+    function endGame(playerWon, amount) {
+        hitButton.disabled = true;  // Disable hit and stand buttons at the end of the game
+        standButton.disabled = true;
         newGameButton.style.display = "inline-block";
+
+        if (playerWon) {
+            gameStatusElement.textContent += ` You've won £${amount.toFixed(2)}!`;
+        } else {
+            gameStatusElement.textContent += ` Game over.`;
+        }
     }
 
     // Event listeners
     hitButton.addEventListener('click', hit);
     standButton.addEventListener('click', stand);
-    newGameButton.addEventListener('click', newGame);
+    newGameButton.addEventListener('click', startNewGame);
 
-    // Start the first game
-    newGame();
+    // Function to handle payment to the casino
+    async function handlePayment(amount) {
+        const token = localStorage.getItem('token');
+        try {
+            const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/user/play-game', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount })
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                alert(`Payment failed: ${data.message}`);
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error('Error processing payment:', error);
+            return false;
+        }
+    }
+
+    // Function to handle winnings transfer to the player
+    async function handleWinnings(amount) {
+        const token = localStorage.getItem('token');
+        try {
+            const response = await fetch('https://3acb-2a00-23c8-3393-4f01-b53a-d3c1-f71-eaa7.ngrok-free.app/auth/user/win', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount })
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                alert(`Winnings transfer failed: ${data.message}`);
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error('Error transferring winnings:', error);
+            return false;
+        }
+    }
+
+    // Start the first game (initially disables hit/stand until amount is selected)
+    gameStatusElement.textContent = "Please choose an amount to play!";
 });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
+    <title>Account - PeerPlay Casino</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/account.css">
 </head>
@@ -29,16 +29,29 @@
     </header>
 
     <div class="account-container">
-        <p id="user-pot">Current Funds: $0</p>
+
+        <div id="xp-container">
+            <h3>Your XP Progress</h3>
+            <p>Earn XP by playing games. Winner receives <strong>50%</strong> of the company pot which holds money left over from losing games</p>
+            <p>Reach 300 XP to get a free ticket into the <strong>PeerPlay Weekly Lottery!</strong></p>
+            <div class="xp-tube">
+                <div class="xp-fill" id="xp-fill"></div>
+            </div>
+            <p><span id="user-xp">0</span>/300 XP</p>
+        </div>
+
+        <h2 id="user-pot">Current Funds: £0</h2>
+
         <li class="dropdown-deposit">
-            <button id="deposit" class="deposit">Deposit</button>
+            <button id="deposit" class="deposit">Deposit Funds</button>
             <ul class="dropdown-content-deposit">
-                <li><button id="deposit5">5</button></li>
-                <li><button id="deposit10">10</button></li>
-                <li><button id="deposit20">20</button></li>
+                <li><button id="deposit5">£5</button></li>
+                <li><button id="deposit10">£10</button></li>
+                <li><button id="deposit20">£20</button></li>
             </ul>
         </li> 
-        <button id="logout">Log Out</button>
+
+        <button id="logout" class="logout-btn">Log Out</button>
     </div>
 
     <footer>

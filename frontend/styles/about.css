@@ -1,88 +1,188 @@
 /* General Styles */
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Space between header, content, and footer */
-    min-height: 100vh;
-    padding: 0 20px;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: black;
-    color: #e0e0e0;
-  }
-  
-  header nav ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin: 0 15px;
-  }
-  
-  header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  header nav ul li a:hover {
-    color: #ffcc00;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between header, content, and footer */
+  min-height: 100vh;
+  padding: 0 20px;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: #e0e0e0;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  color: #ffcc00;
+}
 
 /* About Page Specific Styles */
 .about-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #1f2833;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-    color: #e0e0e0;
-    line-height: 1.6;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #1f2833; /* Dark background for contrast */
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
+  line-height: 1.6;
+  text-align: center; /* Center the text content */
 }
 
 .about-intro, .about-features, .about-mission, .about-contact {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 h1, h2 {
-    color: #ffcc00;
-    text-align: center;
+  color: #ffcc00;
+  text-align: center;
 }
 
 .about-intro p, .about-mission p, .about-contact p {
-    font-size: 1.2em;
-    text-align: center;
-    color: #c0c0c0;
+  font-size: 1.2em;
+  text-align: center;
+  color: #c0c0c0;
 }
 
 .about-features ul {
-    list-style-type: none;
-    padding: 0;
-    font-size: 1.1em;
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.1em;
+  margin: 0 auto; /* Center the list */
+  max-width: 80%; /* Constrain the width on large screens */
 }
 
 .about-features ul li {
-    margin: 10px auto;
-    background-color: #ffcc00;
-    padding: 15px;
-    width: 70%;
-    border-radius: 5px;
-    color: #1f2833;
+  margin: 10px 0;
+  background-color: #ffcc00;
+  padding: 15px;
+  border-radius: 5px;
+  color: #1f2833; /* Dark text for better contrast */
 }
 
 .about-features ul li strong {
-    color: black;
+  color: black;
 }
 
 .about-contact a {
-    color: #ffcc00;
-    text-decoration: none;
+  color: #ffcc00;
+  text-decoration: none;
 }
 
 .about-contact a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-container {
+      padding: 15px;
+      margin: 20px auto;
+  }
+
+  h1, h2 {
+      font-size: 1.8em;
+  }
+
+  .about-intro p, .about-mission p, .about-contact p {
+      font-size: 1em;
+  }
+
+  .about-features ul li {
+      padding: 10px;
+      font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+      padding: 10px;
+      margin: 10px auto;
+  }
+
+  h1, h2 {
+      font-size: 1.5em;
+  }
+
+  .about-intro p, .about-mission p, .about-contact p {
+      font-size: 0.9em;
+  }
+
+  .about-features ul {
+      max-width: 100%; /* Take up full width on small screens */
+  }
+
+  .about-features ul li {
+      font-size: 0.9em;
+      padding: 8px;
+  }
+}
+
+/* About Games Section */
+.about-games {
+  margin: 40px auto;
+  padding: 20px;
+  background-color: black; /* Dark background for a premium feel */
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  /* max-width: 1200px; */
+  width: 100%;
+  color: #e0e0e0; /* Light text for contrast */
+  text-align: center;
+}
+
+.about-games h2 {
+  color: #ffcc00; /* Gold for heading */
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Make the heading stand out */
+}
+
+.about-games ul {
+  list-style: none; /* Remove default list style */
+  padding: 0;
+  margin: 0;
+  text-align: left; /* Align text to the left for better readability */
+  font-size: 1.2em; /* Increase the font size for readability */
+  max-width: 800px; /* Constrain the width */
+  margin: 0 auto; /* Center the list */
+}
+
+.about-games ul li {
+  margin: 20px 0;
+  background-color: #1f2833; /* Darker background for the game descriptions */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+}
+
+.about-games ul li:hover {
+  background-color: #ffcc00; /* Highlight on hover */
+  color: #141414; /* Dark text on hover */
+  transform: translateY(-5px); /* Subtle lift effect */
+}
+
+.about-games ul li strong {
+  color: #ffcc00; /* Gold text for emphasis */
+}
+
+.about-games ul li:hover strong {
+  color: #141414; /* Darken strong text on hover */
 }

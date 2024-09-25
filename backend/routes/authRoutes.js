@@ -1,15 +1,23 @@
 const express = require('express');
-const { signup, login, getUserFunds } = require('../controllers/authControllers'); // Ensure 'getUserFunds' is correctly imported
-const protect = require('../middleware/authMiddleware'); // Import the middleware to protect the route
+const { playGame, winGame } = require('../controllers/gameController');
+const { signup, login, getUserFunds, depositMoney, getUserXP, lottoFund } = require('../controllers/authControllers'); 
+const protect = require('../middleware/authMiddleware'); 
 const router = express.Router();
 
-// Signup route
 router.post('/signup', signup);
 
-// Login route
 router.post('/login', login);
 
-// Get user funds (protected route)
-router.get('/user/funds', protect, getUserFunds); // Make sure getUserFunds is defined
+router.get('/user/funds', protect, getUserFunds);
+
+router.post('/user/deposit', protect, depositMoney);
+
+router.post('/user/play-game', protect, playGame);
+
+router.post('/user/win', protect, winGame);
+
+router.get('/user/xp', protect, getUserXP);
+
+router.get('/user/lottoFund', protect, getUserXP);
 
 module.exports = router;

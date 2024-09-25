@@ -34,8 +34,8 @@ header nav ul li a:hover {
 
 .game-container {
   text-align: center;
-  height: 70%;
-  width: 50%;
+  width: 90%; /* Fluid width for small screens */
+  max-width: 600px; /* Limit max width for large screens */
   border: 3px solid #ffcc00;
   margin: 30px auto;
   background-color: #1f2833; /* Add background to make shadow stand out */
@@ -101,4 +101,62 @@ header nav ul li a:hover {
   font-size: 1.2em;
   color: #ffcc00;
   margin-top: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2em; /* Adjust font size for medium screens */
+  }
+
+  .blackjack-table {
+    flex-direction: column; /* Stack player and dealer hands vertically */
+  }
+
+  .card {
+    width: 50px; /* Smaller card size */
+    height: 75px; /* Smaller card size */
+    font-size: 1.2em; /* Reduce card text size */
+    margin: 5px 0; /* Space between vertically stacked cards */
+  }
+
+  .btn-primary {
+    padding: 8px 16px;
+    font-size: 1em; /* Smaller buttons for medium screens */
+  }
+
+  .status-display {
+    font-size: 1.1em; /* Slightly smaller status text */
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    width: 100%; /* Full width for extra-small screens */
+    padding: 10px; /* Reduce padding for small devices */
+  }
+
+  .game-title {
+    font-size: 1.8em; /* Smaller game title for extra-small devices */
+  }
+
+  .card {
+    width: 40px; /* Further reduce card size */
+    height: 60px;
+    font-size: 1em; /* Smaller text on cards */
+  }
+
+  .btn-primary {
+    padding: 6px 12px; /* Smaller buttons */
+    font-size: 0.9em;
+  }
+
+  .status-display {
+    font-size: 1em; /* Smaller status text */
+  }
+
+  .blackjack-table {
+    flex-direction: column; /* Stack vertically on very small screens */
+    margin-bottom: 10px; /* Reduce bottom margin */
+  }
 }

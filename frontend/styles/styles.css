@@ -3,10 +3,14 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
-  font-family: 'Poppins', sans-serif; /* Switched to a more professional font */
-  background-color: black; /* Darker background for a more premium feel */
-  color: #e0e0e0;
-  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif; /* Professional, clean font */
+  background-color: black; /* Dark background for a premium look */
+  color: #e0e0e0; /* Light text for contrast */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -14,19 +18,17 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  padding: 0 20px; /* Adds padding around the page */
+  padding: 0 20px; /* Add padding around the page */
 }
 
-
+/* Header Styles */
 header {
-  background-color: black; 
+  background-color: black;
   padding: 20px 0;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); 
-  width: 100%; 
-  /* position: relative;
-  top: 0; */
-} 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Adds a subtle shadow for depth */
+  width: 100%;
+}
 
 .logo {
   width: 100px;
@@ -51,7 +53,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-  color: #ffcc00;
+  color: #ffcc00; /* Highlight on hover */
 }
 
 /* Dropdown Menu Styling */
@@ -62,7 +64,7 @@ header nav ul li a:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%; /* Show below the parent */
+  top: 100%;
   left: 0;
   background-color: #333;
   min-width: 160px;
@@ -100,13 +102,13 @@ main {
 
 main h1 {
   font-size: 2.5em;
-  color: #ffcc00;
+  color: #ffcc00; /* Bright and attention-grabbing */
   margin-bottom: 20px;
 }
 
 main p {
   font-size: 1.2em;
-  color: #c0c0c0;
+  color: #c0c0c0; /* Softer text for paragraphs */
   max-width: 600px;
   margin: 0 auto 20px auto;
   line-height: 1.6;
@@ -114,7 +116,7 @@ main p {
 
 /* Button Styling */
 button {
-  background-color: #ffcc00;
+  background-color: #ffcc00; /* Consistent button color */
   border: none;
   padding: 15px 30px;
   font-size: 1.2em;
@@ -122,12 +124,12 @@ button {
   color: #141414;
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
 }
 
 button:hover {
   background-color: #ffc700;
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Subtle movement on hover */
 }
 
 button:active {
@@ -161,9 +163,9 @@ footer {
 
 /* Specifically exclude the header from being blurred */
 header {
-  filter: none; /* Ensure header isn't blurred */
-  pointer-events: auto; /* Allow interaction with the header */
-  z-index: 1000; /* Ensure header stays above the blurred content */
+  filter: none;
+  pointer-events: auto;
+  z-index: 1000; /* Keep header on top of the blurred content */
 }
 
 /* Fullscreen overlay for login/signup prompt */
@@ -173,12 +175,49 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay with transparency */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999; /* Ensure overlay is above blurred content but below header */
+  z-index: 999; /* Ensure overlay is above blurred content */
   color: white;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.lottery-countdown {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+  border-radius: 10px;
+  width: 60%;
+  margin: 20px auto;
+}
+
+#countdown {
+  font-size: 1.5em;
+  color: #ffcc00;
+  animation: pulse 2s infinite; /* Pulse effect every 2 seconds */
+  font-weight: bold;
+}
+
+/* Define the pulse animation */
+@keyframes pulse {
+  0% {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    opacity: 1; /* Dim slightly */
+    transform: scale(1.1); /* Slightly larger */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* Back to normal size */
+  }
+}
+
+#winnings {
+  font-size: 1.2em;
+  color: #17c80e;
 }
