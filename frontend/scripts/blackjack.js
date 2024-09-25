@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function handlePayment(amount) {
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/peerplay-casino/auth/user/play-game', {
+            const response = await fetch('https://sprightly-dolphin-5975b2/auth/user/play-game', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function handleWinnings(amount) {
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/peerplay-casino/auth/user/win', {
+            const response = await fetch('https://sprightly-dolphin-5975b2/auth/user/win', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
