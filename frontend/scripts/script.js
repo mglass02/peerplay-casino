@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/auth/user/play-game', {
+            const response = await fetch('https://https://sprightly-dolphin-5975b2.netlify.app/peerplay-casino/auth/user/play-game', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
