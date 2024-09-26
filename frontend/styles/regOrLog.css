@@ -87,6 +87,9 @@ button {
     width: 50%;
 }
 
+.login{
+  width: 50%;
+}
 /* Hover effect for buttons */
 button:hover {
     background-color: #ffc700;
