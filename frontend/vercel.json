@@ -4,6 +4,11 @@
         "source": "/",
         "destination": "/pages/home.html",
         "permanent": true
+      },
+      {
+        "source": "",
+        "destination": "/pages/home.html",
+        "permanent": true
       }
     ]
   }
