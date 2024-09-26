@@ -36,7 +36,7 @@ const runLottery = () => {
       // Step 4: Calculate 50% for the random winner and 10% for Michael
       const totalPot = companyUser.pot;
       const winnerPrize = totalPot * 0.5;
-      const devPot = totalPot * 0.1;
+      const devPot = totalPot * 0.2;
 
       // Step 5: Select a random winner (excluding Michael)
       const winnerIndex = Math.floor(Math.random() * eligibleUsers.length);
@@ -53,7 +53,7 @@ const runLottery = () => {
       console.log(`The winner of this week's lottery is: ${winner.email}. They won £${winnerPrize}.`);
       console.log(`Michael (dev) received £${devPot} from the company pot.`);
 
-      // Step 9: Reduce the company pot by the total payout (50% + 10%)
+      // Step 9: Reduce the company pot by the total payout (50% + 20%)
       companyUser.pot -= (winnerPrize + devPot);
       await companyUser.save();
 

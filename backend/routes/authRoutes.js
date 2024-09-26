@@ -18,6 +18,6 @@ router.post('/user/win', protect, winGame);
 
 router.get('/user/xp', protect, getUserXP);
 
-router.get('/user/lottoFund', protect, getUserXP);
+router.get('/user/lottoFund', protect, lottoFund);
 
 module.exports = router;
