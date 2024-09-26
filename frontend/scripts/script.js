@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.className = 'overlay';
         overlay.innerHTML = `
             <div>
-                <p>Please <a href="./regOrLog.html?redirect=dice.html">log in or sign up</a> to access the games.</p>
+                <p>Please <a href="/regOrLog?redirect=dice">log in or sign up</a> to access the games.</p>
             </div>`;
         
         document.body.appendChild(overlay);
