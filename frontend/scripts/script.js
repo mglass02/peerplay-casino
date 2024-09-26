@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // If authenticated, remove blur and enable access to games
         gameContainer.classList.remove('blurred');
         const overlay = document.querySelector('.overlay');
+        fetchLotteryPot();
         if (overlay) {
             overlay.remove();
         }
-        fetchLotteryPot();
     }
 
     // Handle account link in the header
