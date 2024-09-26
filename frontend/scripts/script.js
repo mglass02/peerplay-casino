@@ -150,12 +150,14 @@ async function fetchLotteryPot() {
     }
 
     try {
+        // Manually set the email to fetch the pot for peerplaycasino@gmail.com
         const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/funds', {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({ email: 'peerplaycasino@gmail.com' })  // Send the email manually
         });
 
         const data = await response.json();
@@ -163,14 +165,15 @@ async function fetchLotteryPot() {
         if (response.ok) {
             // Assuming the backend returns a 'pot' field for peerplaycasino@gmail.com's funds
             const halfPot = data.pot * 0.5;  // Calculate 50% of the pot
-            document.getElementById('compnay-pot').textContent = `Current Funds (50%): £${halfPot.toFixed(2)}`;  // Display 50% of the user's pot
+            document.getElementById('company-pot').textContent = `Current Funds (50%): £${halfPot.toFixed(2)}`;  // Display 50% of the user's pot
         } else {
-            console.error('Failed to fetch user pot:', data.message);
+            console.error('Failed to fetch pot:', data.message);
             document.getElementById('company-pot').textContent = 'Error fetching funds';
         }
     } catch (error) {
-        console.error('Error fetching user pot:', error);
+        console.error('Error fetching pot:', error);
         document.getElementById('company-pot').textContent = 'Error loading pot';
     }
 }
+
 
