@@ -27,6 +27,7 @@ function checkAuthStatus() {
 
 // Handle DOM content load
 document.addEventListener('DOMContentLoaded', function() {
+    fetchLotteryPot();
     const isAuthenticated = checkAuthStatus();  // Check if user is authenticated
     const gameContainer = document.querySelector('.game-container');
 
@@ -137,5 +138,39 @@ function getNextLotteryDate() {
     }
 
     return nextFriday;
+}
+
+// Function to fetch and display 50% of the peerplaycasino@gmail.com user's pot (funds)
+async function fetchLotteryPot() {
+    const token = localStorage.getItem('token');  // Get the stored JWT token
+
+    if (!token) {
+        document.getElementById('company-pot').textContent = 'Log in to see this weeks winnings';
+        return;
+    }
+
+    try {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/funds', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Assuming the backend returns a 'pot' field for peerplaycasino@gmail.com's funds
+            const halfPot = data.pot * 0.5;  // Calculate 50% of the pot
+            document.getElementById('compnay-pot').textContent = `Current Funds (50%): £${halfPot.toFixed(2)}`;  // Display 50% of the user's pot
+        } else {
+            console.error('Failed to fetch user pot:', data.message);
+            document.getElementById('company-pot').textContent = 'Error fetching funds';
+        }
+    } catch (error) {
+        console.error('Error fetching user pot:', error);
+        document.getElementById('company-pot').textContent = 'Error loading pot';
+    }
 }
 
