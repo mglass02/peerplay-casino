@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!token) {
             alert('User not authenticated. Please log in.');
-            window.location.href = './regOrLog.html';  // Redirect to login if no user is authenticated
+            window.location.href = '/regOrLog';  // Redirect to login if no user is authenticated
             return;
         }
 
