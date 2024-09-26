@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Handle account link in the header
-    const accountLink = document.querySelector('nav .main-nav li a[href="./regOrLog.html"]');
+    const accountLink = document.querySelector('nav .main-nav li a[href="/regOrLog"]');
 
     if (accountLink) {
         if (isAuthenticated) {
