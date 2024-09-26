@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('deposit20').addEventListener('click', function() {
         handleDeposit(20);  // Deposit 20 units
     });
+
+    document.getElementById('deposit100').addEventListener('click', function() {
+        handleDeposit(100);  // Deposit 20 units
+    });
 });
 
 // Function to fetch and display the user's pot (funds)
