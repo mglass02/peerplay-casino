@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle account link in the header
     const accountLink = document.querySelector('nav .main-nav li a[href="/regOrLog"]');
-    console.log(accountLink);  // Check what this logs
 
     if (accountLink) {
         if (isAuthenticated) {
