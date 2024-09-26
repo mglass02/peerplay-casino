@@ -27,7 +27,6 @@ function checkAuthStatus() {
 
 // Handle DOM content load
 document.addEventListener('DOMContentLoaded', function() {
-    fetchLotteryPot();
     const isAuthenticated = checkAuthStatus();  // Check if user is authenticated
     const gameContainer = document.querySelector('.game-container');
 
@@ -52,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (overlay) {
             overlay.remove();
         }
+        fetchLotteryPot();
     }
 
     // Handle account link in the header
