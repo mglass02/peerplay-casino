@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.className = 'overlay';
         overlay.innerHTML = `
             <div>
-                <p>Please <a href="/regOrLog?redirect=/dice">log in or sign up</a> to access the games.</p>
+                <p>Please <a href="./regOrLog.html?redirect=dice.html">log in or sign up</a> to access the games.</p>
             </div>`;
         
         document.body.appendChild(overlay);
@@ -54,16 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Handle account link in the header
-    const accountLink = document.querySelector('nav .main-nav li a[href="/regOrLog"]');
+    const accountLink = document.querySelector('nav .main-nav li a[href="./regOrLog.html"]');
 
     if (accountLink) {
         if (isAuthenticated) {
             // If authenticated, link to account page
-            accountLink.setAttribute('href', './account');
+            accountLink.setAttribute('href', './account.html');
             accountLink.textContent = 'Account';
         } else {
             // If not authenticated, link to login/signup page
-            accountLink.setAttribute('href', './regOrLog');
+            accountLink.setAttribute('href', './regOrLog.html');
             accountLink.textContent = 'Account';
         }
     } else {
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!token) {
             alert('User not authenticated. Please log in.');
-            window.location.href = '/regOrLog';  // Redirect to login if no user is authenticated
+            window.location.href = './regOrLog.html';  // Redirect to login if no user is authenticated
             return;
         }
 
