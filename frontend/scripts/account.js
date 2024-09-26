@@ -34,7 +34,7 @@ async function fetchUserPot() {
     }
 
     try {
-        const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/funds', {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/funds', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
@@ -67,7 +67,7 @@ async function handleDeposit(amount) {
     }
 
     try {
-        const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/deposit', {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/deposit', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
@@ -100,7 +100,7 @@ async function fetchUserXP() {
     }
 
     try {
-        const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/xp', {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/xp', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication

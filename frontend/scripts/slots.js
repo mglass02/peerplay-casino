@@ -19,7 +19,7 @@ async function fetchUserPot() {
     }
 
     try {
-        const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/funds', {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/funds', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -66,7 +66,7 @@ async function handlePayment(amount) {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/play-game', {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/play-game', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -94,7 +94,7 @@ async function transferWinnings(amount) {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/win', {
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/win', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

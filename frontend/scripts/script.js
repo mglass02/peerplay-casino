@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const response = await fetch('https://peerplay-backend-373c075b1ee9.herokuapp.com//auth/user/play-game', {
+            const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/play-game', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
