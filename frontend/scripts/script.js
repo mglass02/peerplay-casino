@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (accountLink) {
         if (isAuthenticated) {
             // If authenticated, link to account page
-            accountLink.setAttribute('href', './account.html');
+            accountLink.setAttribute('href', '/account');
             accountLink.textContent = 'Account';
         } else {
             // If not authenticated, link to login/signup page
-            accountLink.setAttribute('href', './regOrLog.html');
+            accountLink.setAttribute('href', '/regOrLog');
             accountLink.textContent = 'Account';
         }
     } else {
