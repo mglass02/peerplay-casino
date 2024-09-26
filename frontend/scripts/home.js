@@ -20,25 +20,17 @@ function updateCountdown() {
 }
 
 async function fetchLotteryPot() {
-    const token = localStorage.getItem('token');  // Get the stored JWT token
-
     const companyPotElement = document.getElementById('company-pot');
     if (!companyPotElement) {
         console.error('Element with ID company-pot not found');
         return;
     }
 
-    if (!token) {
-        companyPotElement.textContent = 'Log in to see what you could win';
-        return;
-    }
-
     try {
-        // Fetch the total pot from the backend
-        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/user/lottoFund', {
+        // Fetch the total pot from the backend, no need for authentication token
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/auth/user/lottoFund', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
                 'Content-Type': 'application/json'
             }
         });
@@ -58,6 +50,7 @@ async function fetchLotteryPot() {
         companyPotElement.textContent = 'Error loading pot';
     }
 }
+
 
 // Initialize the countdown and winnings
 window.onload = function() {
