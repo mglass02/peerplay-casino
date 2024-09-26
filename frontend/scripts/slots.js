@@ -14,7 +14,7 @@ async function fetchUserPot() {
 
     if (!token) {
         alert('User not authenticated. Please log in.');
-        window.location.href = './regOrLog.html';
+        window.location.href = '/regOrLog';
         return;
     }
 

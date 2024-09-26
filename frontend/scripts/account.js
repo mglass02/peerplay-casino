@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logout').addEventListener('click', function() {
         localStorage.removeItem('token');  // Remove JWT token upon logout
         alert('Logged out successfully.');
-        window.location.href = './regOrLog.html';  // Redirect to login/signup page
+        window.location.href = '/regOrLog';  // Redirect to login/signup page
     });
 
     // Event listeners for deposit buttons
@@ -66,7 +66,7 @@ async function handleDeposit(amount) {
 
     if (!token) {
         alert('User not authenticated. Please log in.');
-        window.location.href = './regOrLog.html';  // Redirect to login if no user is authenticated
+        window.location.href = '/regOrLog';  // Redirect to login if no user is authenticated
         return;
     }
 

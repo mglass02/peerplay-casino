@@ -18,7 +18,7 @@
     },
     {
       "source": "/account",
-      "destination": "/pages/account.html"
+      "destination": "/pages/regOrLog.html"
     },
     {
       "source": "/login",

@@ -49,7 +49,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
           // Store the JWT token in localStorage
           localStorage.setItem('token', data.token); // Store the token
           alert('Login successful!');
-          window.location.href = './home.html'; // Redirect to home or any page after login
+          window.location.href = '/home'; // Redirect to home or any page after login
       } else {
           alert('Login failed: ' + data.message);
       }
