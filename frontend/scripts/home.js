@@ -19,7 +19,48 @@ function updateCountdown() {
     setTimeout(updateCountdown, 60000);  // Update every 60 seconds
 }
 
+async function fetchLotteryPot() {
+    const token = localStorage.getItem('token');  // Get the stored JWT token
+
+    const companyPotElement = document.getElementById('company-pot');
+    if (!companyPotElement) {
+        console.error('Element with ID company-pot not found');
+        return;
+    }
+
+    if (!token) {
+        companyPotElement.textContent = 'Log in to see what you could win';
+        return;
+    }
+
+    try {
+        // Fetch the total pot from the backend
+        const response = await fetch('https://peerplay-backend-4098d92d4443.herokuapp.com/user/lottoFund', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,  // Send JWT token to backend for authentication
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Assuming the backend returns a 'pot' field with the total fund amount
+            const halfPot = data.pot * 0.5;  // Calculate 50% of the total pot
+            companyPotElement.textContent = `Current Funds (50%): £${halfPot.toFixed(2)}`;  // Display 50% of the total pot
+        } else {
+            console.error('Failed to fetch total pot:', data.message);
+            companyPotElement.textContent = 'Error fetching funds';
+        }
+    } catch (error) {
+        console.error('Error fetching total pot:', error);
+        companyPotElement.textContent = 'Error loading pot';
+    }
+}
+
 // Initialize the countdown and winnings
 window.onload = function() {
     updateCountdown();  // Start the countdown
+    fetchLotteryPot();
 };
