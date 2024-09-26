@@ -1,14 +1,40 @@
 {
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "/pages/home.html",
-        "permanent": true
-      },
-      {
-        "source": "",
-        "destination": "/pages/home.html",
-        "permanent": true
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "",
+      "destination": "/pages/home.html"
+    },
+    {
+      "source": "/",
+      "destination": "/pages/home.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/pages/home.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/about.html"
+    },
+    {
+      "source": "/account",
+      "destination": "/pages/account.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/pages/regOrLog.html"
+    },
+    {
+      "source": "/slot",
+      "destination": "/pages/slot.html"
+    },
+    {
+      "source": "/blackjack",
+      "destination": "/pages/blackjack.html"
+    },
+    {
+      "source": "/dice",
+      "destination": "/pages/dice.html"
+    }
+  ]
+}
