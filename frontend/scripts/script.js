@@ -29,11 +29,6 @@ function checkAuthStatus() {
 document.addEventListener('DOMContentLoaded', function() {
     const isAuthenticated = checkAuthStatus();  // Check if user is authenticated
     const gameContainer = document.querySelector('.game-container');
-    
-    // Fetch lottery pot if the user is authenticated
-    if (isAuthenticated) {
-        fetchLotteryPot();  // This is now in the right place to be called regardless of game access
-    }
 
     // Handle game access
     if (!isAuthenticated && gameContainer) {
@@ -75,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('Account link not found in the navigation.');  // Warn if account link is not found
     }
 });
-
 
 // Game buttons
 document.addEventListener('DOMContentLoaded', function () {
