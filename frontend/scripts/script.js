@@ -145,7 +145,7 @@ async function fetchLotteryPot() {
     const token = localStorage.getItem('token');  // Get the stored JWT token
 
     if (!token) {
-        document.getElementById('company-pot').textContent = 'Log in to see this weeks winnings';
+        document.getElementById('company-pot').textContent = 'Log in to see what you could win';
         return;
     }
 
