@@ -17,8 +17,12 @@
       "destination": "/pages/about.html"
     },
     {
-      "source": "/account",
+      "source": "/regOrLog",
       "destination": "/pages/regOrLog.html"
+    },
+    {
+      "source": "/account",
+      "destination": "/pages/account.html"
     },
     {
       "source": "/login",
