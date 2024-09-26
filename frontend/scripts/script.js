@@ -25,11 +25,15 @@ function checkAuthStatus() {
 }
 
 
+// Handle DOM content load
 document.addEventListener('DOMContentLoaded', function() {
-    const isAuthenticated = checkAuthStatus();  // Check if the user is authenticated
-    console.log("Is authenticated:", isAuthenticated);  // Log authentication status
-
+    const isAuthenticated = checkAuthStatus();  // Check if user is authenticated
     const gameContainer = document.querySelector('.game-container');
+    
+    // Fetch lottery pot if the user is authenticated
+    if (isAuthenticated) {
+        fetchLotteryPot();  // This is now in the right place to be called regardless of game access
+    }
 
     // Handle game access
     if (!isAuthenticated && gameContainer) {
@@ -43,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div>
                 <p>Please <a href="./regOrLog.html?redirect=dice.html">log in or sign up</a> to access the games.</p>
             </div>`;
-
+        
         document.body.appendChild(overlay);
     } else if (isAuthenticated && gameContainer) {
         // If authenticated, remove blur and enable access to games
@@ -52,10 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (overlay) {
             overlay.remove();
         }
-        fetchLotteryPot();  // Call fetchLotteryPot if the user is authenticated
     }
-});
-
 
     // Handle account link in the header
     const accountLink = document.querySelector('nav .main-nav li a[href="./regOrLog.html"]');
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('Account link not found in the navigation.');  // Warn if account link is not found
     }
 });
+
 
 // Game buttons
 document.addEventListener('DOMContentLoaded', function () {
