@@ -18,46 +18,53 @@ const runLottery = () => {
       const eligibleUsers = await User.find({
         xp: { $gte: 300 },
         email: { $ne: 'michael.andrew.glass@gmail.com' } // Exclude michael.andrew.glass@gmail.com from winning
-      }).select('email pot');
+      }).select('email username pot');
 
       if (eligibleUsers.length === 0) {
         console.log('No eligible users for this week.');
         return;
       }
 
-      // Step 3: Find the user with the email michael.andrew.glass@gmail.com (for the 10% allocation)
-      const michaelUser = await User.findOne({ email: 'michael.andrew.glass@gmail.com' });
+      // Step 3: Find the user with the email michael.andrew.glass@gmail.com (for the 20% allocation)
+      const devUser = await User.findOne({ email: 'michael.andrew.glass@gmail.com' });
 
       if (!michaelUser) {
         console.log('Michael’s account not found.');
         return;
       }
 
-      // Step 4: Calculate 50% for the random winner and 10% for Michael
+      // Step 4: Calculate 50% for the random winner and 20% for dev
       const totalPot = companyUser.pot;
       const winnerPrize = totalPot * 0.5;
       const devPot = totalPot * 0.2;
 
-      // Step 5: Select a random winner (excluding Michael)
+      // Step 5: Select a random winner (excluding dev)
       const winnerIndex = Math.floor(Math.random() * eligibleUsers.length);
       const winner = eligibleUsers[winnerIndex];
 
       // Step 6: Update the winner's pot with 50% of the company pot
       await User.findByIdAndUpdate(winner._id, { $inc: { pot: winnerPrize } });
 
-      // Step 7: Add 10% of the company pot to Michael's account
-      michaelUser.pot += devPot;
-      await michaelUser.save();
+      // Step 7: Add a message to the winner's account
+      await User.findByIdAndUpdate(winner._id, { $set: { lotteryWinMessage: 'You won this week\'s lottery!' } });
 
-      // Step 8: Announce the winner and Michael’s prize
-      console.log(`The winner of this week's lottery is: ${winner.email}. They won £${winnerPrize}.`);
-      console.log(`Michael (dev) received £${devPot} from the company pot.`);
+      // Step 8: Add 20% of the company pot to dev's account
+      devUser.pot += devPot;
+      await devUser.save();
 
-      // Step 9: Reduce the company pot by the total payout (50% + 20%)
+      // Step 9: Announce the winner prize
+      console.log(`\n--------------------------`);
+      console.log(`🎉 The winner of this week's lottery is:`);
+      console.log(`Username: ${winner.username}`);
+      console.log(`Email: ${winner.email}`);
+      console.log(`Prize Won: £${winnerPrize.toFixed(2)}`);
+      console.log(`--------------------------\n`);
+
+      // Step 10: Reduce the company pot by the total payout (50% + 20%)
       companyUser.pot -= (winnerPrize + devPot);
       await companyUser.save();
 
-      // Step 10: Reset XP for all users back to 0
+      // Step 11: Reset XP for all users back to 0
       await User.updateMany({}, { $set: { xp: 0 } });
 
       console.log('Lottery completed, XP reset, and company pot updated.');

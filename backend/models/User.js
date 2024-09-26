@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   pot: { type: Number, default: 0, min: 0 },
-  xp: { type: Number, default: 0, min: 0}
+  xp: { type: Number, default: 0, min: 0},
+  lotteryWinMessage: {type: String}
 });
 
 // Hash password before saving
