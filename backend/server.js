@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const runLottery = require('./jobs/lotteryJob');
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
@@ -36,8 +35,6 @@ app.use('/auth', authRoutes);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/pages/home.html'));
 });
-
-runLottery();
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
