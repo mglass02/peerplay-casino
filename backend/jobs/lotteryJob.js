@@ -4,7 +4,7 @@ const User = require('../models/User');
 // Cron job to run every Friday at 12 PM
 const runLottery = () => {
   // '0 12 * * 5'
-  cron.schedule('59 12 27 9 5', async () => {
+  cron.schedule('00 13 27 9 5', async () => {
     try {
       console.log('Running weekly lottery...');
 
