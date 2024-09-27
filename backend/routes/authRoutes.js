@@ -2,6 +2,7 @@ const express = require('express');
 const { playGame, winGame } = require('../controllers/gameController');
 const { signup, login, getUserFunds, depositMoney, getUserXP, lottoFund } = require('../controllers/authControllers'); 
 const protect = require('../middleware/authMiddleware'); 
+const runLottery = require('./path-to-lottery-script');
 const router = express.Router();
 
 router.post('/signup', signup);
@@ -19,5 +20,7 @@ router.post('/user/win', protect, winGame);
 router.get('/user/xp', protect, getUserXP);
 
 router.get('/user/lottoFund', lottoFund);
+
+runLottery();
 
 module.exports = router;
