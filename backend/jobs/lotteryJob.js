@@ -4,7 +4,7 @@ const User = require('../models/User');
 // Cron job to run every Friday at 12 PM
 const runLottery = () => {
   // '0 12 * * 5'
-  cron.schedule('50 12 27 9 5', async () => {
+  cron.schedule('55 12 27 9 5', async () => {
     try {
       console.log('Running weekly lottery...');
 
@@ -27,9 +27,9 @@ const runLottery = () => {
       }
 
       // Step 3: Find the user with the email michael.andrew.glass@gmail.com (for the 20% allocation)
-      const michaelUser = await User.findOne({ email: 'michael.andrew.glass@gmail.com' });
+      const devUser = await User.findOne({ email: 'michael.andrew.glass@gmail.com' });
 
-      if (!michaelUser) {
+      if (!devUser) {
         console.log('Michael’s account not found.');
         return;
       }
@@ -50,8 +50,8 @@ const runLottery = () => {
       await User.findByIdAndUpdate(winner._id, { $set: { lotteryWinMessage: 'You won this week\'s lottery!' } });
 
       // Step 8: Add 20% of the company pot to dev's account
-      michaelUser.pot += devPot;
-      await michaelUser.save();
+      devUser.pot += devPot;
+      await devUser.save();
 
       // Step 9: Announce the winner prize
       console.log(`\n--------------------------`);
